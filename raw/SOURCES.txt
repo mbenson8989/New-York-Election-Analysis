@@ -1,0 +1,49 @@
+New York official sources, retrieved Nov 22, 2026 (about 06:10 to 06:25 CST)
+Retrieved through the Claude desktop app's built-in browser on the user's laptop;
+copied into this repo and checked byte-for-byte with SHA-256 (browser hash = repo-file hash).
+
+1. Enrollment, Nov 1, 2022 (NYS Board of Elections)
+   Listing page: https://elections.ny.gov/enrollment-county  ("Voters Registered by County as of 11/1/2022")
+   Link: https://elections.ny.gov/voters-registered-county-1112022
+   File served: https://elections.ny.gov/system/files/documents/2023/10/11-01-2022.xlsx
+   Original .xlsx: 22,001 bytes, SHA-256 1983c002b8f713f9bcabd42723c09710cd0fca2a0d0ef000cdf77e0c9e26c3d0
+   Repo copy (county Total rows = Active + Inactive): 2022_enrollment_by_county_nov1_totals.csv
+   SHA-256 b76e5ed71a45acbd3806cc41c647c301646d88231a61a80dc6737ccc963e2d7e
+
+2. Enrollment, Nov 1, 2026 (NYS Board of Elections)
+   Link: https://elections.ny.gov/voters-registered-county-11012026
+   File served: https://elections.ny.gov/system/files/documents/2026/11/county_nov26.xlsx
+   Original .xlsx: 22,232 bytes, SHA-256 bd5c6ef471080952115be3fee8543efbff051f30edf6e9f682bb3e752b25f8e6
+   Repo copy (county Total rows = Active + Inactive): 2026_enrollment_by_county_nov1_totals.csv
+   SHA-256 2dc49162aaf9df076e0887bd5a70ebb4bc3080e3fb443ac64d0ab553d61ce0ae
+
+   Check done in the browser on both workbooks before copying: for every county and every
+   party column, Active + Inactive = Total, and DEM+REP+CON+WOR+OTH+BLANK = TOTAL on every row.
+   0 mismatches.
+
+3. 2022 Governor, certified (NYS Board of Elections results database)
+   Page: https://results.elections.ny.gov/contest/1  (2022 Nov 8 General, Governor, State of New York)
+   Same data as the page's "Results CSV" button:
+   https://ny.elstats.civera.com/api/download_contest/1_table.csv?split_party=true
+   Repo copy (the page's county table): 2022_governor_by_county_certified.csv
+   SHA-256 2b29421641b4d81c6d5221d9d16866daf7858ee00151349945d7fd0e83c70447
+   Columns: Hochul & Delgado on Democratic and Working Families lines; Zeldin & Esposito on
+   Republican and Conservative lines; Scattering (write-ins); Blank; Void; Total Votes
+   (Total Votes includes blank and void).
+
+4. 2026 Governor, UNOFFICIAL (NYS Board of Elections Election Night Reporting)
+   Page: https://nyenr.elections.ny.gov/  Governor and Lieutenant Governor, Statewide, County Breakdown = Yes
+   Page timestamp: 11/21/2026 11:42:41 AM. Election Districts Reporting: 12,108 of 13,187.
+   Repo copy: 2026_governor_by_county_unofficial_ENR.csv
+   SHA-256 afa355bf84167e6bc734297bde5c9e9f420752806a0ab5a04a1747d72df11003
+   Lines: Hochul / Adams on DEM and WOR; Blakeman / Hood on REP, CON and Vote Affordable.
+   The page's own "Votes (by Candidate)" for Blakeman equals REP + CON + Vote Affordable,
+   so Vote Affordable is counted as a Blakeman line.
+   Check done in the browser for all 63 rows: DEM+WOR = Hochul total; REP+CON+VA = Blakeman total;
+   Hochul + Blakeman + Write-in + Blank + Void = Total Votes. 0 mismatches.
+
+   Notice printed on the ENR page: "these results do not include a significant number of unscanned
+   emergency Election Day ballots from Westchester County. Accordingly, the results are incomplete
+   and are subject to change". Counties not at full election-district reporting on the page:
+   Broome 125/126, Chautauqua 0/91, Nassau 1,006/1,083, Suffolk 1,067/1,070, Westchester 0/906,
+   Wyoming 39/40. 2026 figures are unofficial and not certified by the NYS Board of Elections.
