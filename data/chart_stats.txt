@@ -1,0 +1,1 @@
+scatter_r_log_size_vs_dG=0.4191
