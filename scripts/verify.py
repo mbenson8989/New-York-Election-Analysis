@@ -7,7 +7,7 @@ from fractions import Fraction as Fr
 from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RAW = os.path.join(ROOT, "raw")
+RAW = os.path.join(ROOT, "source_data")
 log = []
 P = lambda *a: log.append(" ".join(str(x) for x in a))
 fails = 0
@@ -184,7 +184,7 @@ add(sum(1 for r in rows if r["reg_dem_fell"] == "True")); add(sum(1 for r in row
 add(sum(1 for r in rows if r["reg_dem_fell"] != "True" and float(r["dR"]) < 0))
 add(sum(1 for r in rows if r["region"] == "Outside NYC" and r["reg_dem_fell"] == "True"))
 add(sum(1 for r in rows if r["region"] == "Outside NYC" and r["reg_dem_fell"] != "True"))
-# non-data numbers: source metadata (from raw/SOURCES.txt and the ENR page), structure, and method constants
+# non-data numbers: source metadata (from source_data/SOURCES.txt and the ENR page), structure, and method constants
 NONDATA = {"2022", "2026", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "15", "19", "22", "57", "62", "63", "100", "0", "211",
            "12,108", "13,187", "125", "126", "91", "1,006", "1,083", "1,067", "1,070", "906", "39", "40", "42", "41", "11.42", "42:41", "11:42", "21",
            "2023", "01", "nov26", "0.01", "9", "3.0", "+12", "0.00001"}

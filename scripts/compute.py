@@ -12,7 +12,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-RAW = os.path.join(ROOT, "raw")
+RAW = os.path.join(ROOT, "source_data")
 DATA = os.path.join(ROOT, "data")
 os.makedirs(DATA, exist_ok=True)
 
