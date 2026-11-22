@@ -1,0 +1,75 @@
+VERIFY_LOG.txt — New York 2022 vs 2026 Governor, ΔG method
+Run: 2026-11-22 06:23 (America/Chicago)
+Result: ALL PASSES OK
+*2026 figures are unofficial and not certified by the NYS Board of Elections.
+
+==============================================================================
+PASS 1: raw data against the official source
+==============================================================================
+1a. Repo files vs SHA-256 computed in the browser at the first pull (proves the copy is byte-exact):
+    OK  2022_enrollment_by_county_nov1_totals.csv  b76e5ed71a45acbd3806cc41c647c301646d88231a61a80dc6737ccc963e2d7e
+    OK  2026_enrollment_by_county_nov1_totals.csv  2dc49162aaf9df076e0887bd5a70ebb4bc3080e3fb443ac64d0ab553d61ce0ae
+    OK  2022_governor_by_county_certified.csv  2b29421641b4d81c6d5221d9d16866daf7858ee00151349945d7fd0e83c70447
+    OK  2026_governor_by_county_unofficial_ENR.csv  afa355bf84167e6bc734297bde5c9e9f420752806a0ab5a04a1747d72df11003
+1b. Second independent pull from the official sites (re-downloaded workbooks; re-read result pages with different code), compared county by county:
+    OK  Enrollment 11/1/2022 (62 counties x 7 columns): repo 0755def56aed3988… vs second pull 0755def56aed3988…
+    OK  Enrollment 11/1/2026 (62 counties x 7 columns): repo aa180f2a832e4651… vs second pull aa180f2a832e4651…
+    OK  2022 Governor certified (62 counties x 8 columns): repo 8ea124f23d6c4b0d… vs second pull 8ea124f23d6c4b0d…
+    OK  2026 Governor ENR* (62 counties x 9 columns): repo cec7ca71d631fd58… vs second pull cec7ca71d631fd58…
+    OK  Workbooks re-downloaded with identical SHA-256 (2022 1983c002b8f713f9…, 2026 bd5c6ef471080952…)
+    OK  ENR page timestamp unchanged at second pull: 11/21/2026 11:42:41 AM
+1c. Internal checks against each source's own total rows:
+    OK  enroll2022 DEM                      sum of 62 counties    6,511,132 = official total    6,511,132
+    OK  enroll2022 WOR                      sum of 62 counties       50,642 = official total       50,642
+    OK  enroll2022 TOTAL                    sum of 62 counties   13,129,900 = official total   13,129,900
+    OK  enroll2026 DEM                      sum of 62 counties    6,500,386 = official total    6,500,386
+    OK  enroll2026 WOR                      sum of 62 counties       69,959 = official total       69,959
+    OK  enroll2026 TOTAL                    sum of 62 counties   13,572,803 = official total   13,572,803
+    OK  votes2022  Hochul_DEM               sum of 62 counties    2,879,092 = official total    2,879,092
+    OK  votes2022  Hochul_WOR               sum of 62 counties      261,323 = official total      261,323
+    OK  votes2022  Zeldin_REP               sum of 62 counties    2,449,394 = official total    2,449,394
+    OK  votes2022  Zeldin_CON               sum of 62 counties      313,187 = official total      313,187
+    OK  votes2022  Scattering               sum of 62 counties        9,290 = official total        9,290
+    OK  votes2022  Blank                    sum of 62 counties       41,829 = official total       41,829
+    OK  votes2022  Void                     sum of 62 counties        8,163 = official total        8,163
+    OK  votes2022  Total_Votes              sum of 62 counties    5,962,278 = official total    5,962,278
+    OK  votes2026  Hochul_DEM               sum of 62 counties    3,263,690 = official total    3,263,690
+    OK  votes2026  Hochul_WOR               sum of 62 counties      374,337 = official total      374,337
+    OK  votes2026  Blakeman_REP             sum of 62 counties    2,150,307 = official total    2,150,307
+    OK  votes2026  Blakeman_CON             sum of 62 counties      235,447 = official total      235,447
+    OK  votes2026  Blakeman_VoteAffordable  sum of 62 counties       40,866 = official total       40,866
+    OK  votes2026  Write_in                 sum of 62 counties       12,826 = official total       12,826
+    OK  votes2026  Blank                    sum of 62 counties       57,932 = official total       57,932
+    OK  votes2026  Void                     sum of 62 counties        5,406 = official total        5,406
+    OK  votes2026  Total_Votes              sum of 62 counties    6,140,811 = official total    6,140,811
+    OK  Browser checks at pull time: Active + Inactive = Total for every county and party (both enrollment files); party columns sum to TOTAL on every row; 2026 DEM+WOR = Hochul total, REP+CON+VA = Blakeman total, and all lines + write-in + blank + void = Total Votes in all 63 ENR rows. 0 mismatches.
+    NOTE ENR page 'Active Registered Voters: 12,665,686' equals the Nov 1, 2026 enrollment file's statewide Active total (12,665,686).
+
+==============================================================================
+PASS 2: all math recomputed independently (exact fractions, separate code)
+==============================================================================
+    OK  504 county/statewide values (S, R, ΔG, ΔG with WF, surplus, gap for 62 counties + state) match the computed table to 0.00001; 0 mismatches.
+    OK  Fitted surplus equation recomputed by closed-form least squares: m = 7.980788, b = 2.537533, n = 49 (table: m = 7.980788, b = 2.537533, n = 49)
+    OK  Group '57 counties outside NYC': pooled ΔG 7.873478 (table 7.873478), n = 57
+    OK  Group '5 NYC counties': pooled ΔG 8.362105 (table 8.362105), n = 5
+    OK  Group 'All 62 counties': pooled ΔG 8.441466 (table 8.441466), n = 62
+    OK  Statewide row computed from the official statewide totals matches.
+
+==============================================================================
+PASS 3: every number on every page checked against the computed table
+==============================================================================
+    README.md                                  79 numbers checked, 0 not found in table
+    wiki/62-County-PDF-Information.md          37 numbers checked, 0 not found in table
+    wiki/Floor-and-Ceiling.md                 153 numbers checked, 0 not found in table
+    wiki/Graphs.md                             70 numbers checked, 0 not found in table
+    wiki/Hamilton-County-Audit.md              95 numbers checked, 0 not found in table
+    wiki/Home.md                               86 numbers checked, 0 not found in table
+    wiki/Locked-New-York-Formula.md           124 numbers checked, 0 not found in table
+    wiki/Reverse-Math.md                      610 numbers checked, 0 not found in table
+    wiki/_Sidebar.md                            2 numbers checked, 0 not found in table
+    OK  1256 numbers across 9 pages; 0 unmatched.
+    OK  PDF: 2172 numbers checked, 0 not found in table
+    OK  Written claims: registration share fell in all five ceiling counties; Hochul all-line votes rose in all 62; every county gap > 0; every county ΔG > 0.
+    Also checked: the PDF is built by scripts/make_pdf.py straight from data/ny_county_table.csv; its statewide row is the computed statewide row.
+    Sign/label checks (scripted): ceiling = max ΔG, floor = min ΔG, top-5 order, non-loss list = counties where Nov 1 2026 Democrats >= 2022.
+    OK  Home page names ceiling Orange and floor New York.
