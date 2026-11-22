@@ -1,5 +1,5 @@
 VERIFY_LOG.txt — New York 2022 vs 2026 Governor, ΔG method
-Run: 2026-11-22 06:23 (America/Chicago)
+Run: 2026-11-22 07:45 (America/Chicago)
 Result: ALL PASSES OK
 *2026 figures are unofficial and not certified by the NYS Board of Elections.
 

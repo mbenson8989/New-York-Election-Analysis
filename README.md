@@ -26,7 +26,7 @@ Every number comes from the New York State Board of Elections:
 | 2022 Governor votes by county | The Board's **certified** 2022 results |
 | 2026 Governor votes by county | The Board's **unofficial** Election Night Reporting page\* |
 
-Links, exact copies of the data, and digital fingerprints proving the copies match the originals are in [`raw/SOURCES.txt`](raw/SOURCES.txt).
+Links, exact copies of the data, and digital fingerprints proving the copies match the originals are in [`source_data/SOURCES.txt`](source_data/SOURCES.txt).
 
 ## Fusion voting (Working Families and other party lines)
 
@@ -100,7 +100,7 @@ The **Working Families Party** is a separate party that usually nominates the De
 
 | Folder / file | Contents |
 |---|---|
-| `raw/` | Exact copies of the official data, plus `SOURCES.txt` (links and fingerprints) |
+| `source_data/` | Exact copies of the official data, plus `SOURCES.txt` (links and fingerprints) |
 | `data/ny_county_table.csv` | Every computed number for every county and the state |
 | `data/ny_summary.json` | Group totals, the fitted equation and the side check |
 | `scripts/` | The programs that compute the numbers, draw the charts, build the PDF and pages, and check everything |
